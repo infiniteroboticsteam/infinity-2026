@@ -77,8 +77,11 @@ TURN_SPEED = 700
 TURN_ACCELERATION = 700
 
 # Set up the drive base.
-DRIVE_LEFT = Motor(Port.D, Direction.COUNTERCLOCKWISE)
-DRIVE_RIGHT = Motor(Port.B, Direction.CLOCKWISE)
+#Roger's robot uses a 56 mm wheel diameter and a 114 mm axle track.
+#DL:D, DR:B, RA:A, LA:E, LC:C, RC:F
+#You can change the ports to match your robot configuration.
+DRIVE_LEFT = Motor(Port.D, Direction.CLOCKWISE)
+DRIVE_RIGHT = Motor(Port.B, Direction.COUNTERCLOCKWISE)
 DRIVE_BASE = DriveBase(DRIVE_LEFT, DRIVE_RIGHT, 56, 114)
 
 # set up the attachments, if needed

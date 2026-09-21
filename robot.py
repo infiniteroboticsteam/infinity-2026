@@ -4,12 +4,12 @@ from pybricks.tools import multitask, run_task, wait
 from library import set_drivebase, print_drivebase_settings
 from ui import add_program, user_interface
 
-from run1 import run1
-from run2 import run2
-from run3 import run3
-from run4 import run4
-from run5 import run5
-from run6 import run6
+#from run1 import run1
+#from run2 import run2
+#from run3 import run3
+#from run4 import run4
+#from run5 import run5
+#from run6 import run6
 
 async def main():
     # Import from xbox_teleop the teleop function if you want to use

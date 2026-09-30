@@ -4,12 +4,9 @@ from pybricks.tools import multitask, run_task, wait
 from library import set_drivebase, print_drivebase_settings
 from ui import add_program, user_interface
 
-#from run1 import run1
-#from run2 import run2
-#from run3 import run3
-#from run4 import run4
-#from run5 import run5
-#from run6 import run6
+# 2025 Unearthed runs are archived in code_2025_unearthed/ (they use the old
+# CENTER/FRONT attachments). Import new-season runs here, e.g.:
+# from run1 import run1
 
 async def main():
     # Import from xbox_teleop the teleop function if you want to use
@@ -32,12 +29,7 @@ async def main():
     # Add the programs (Missons) below they will appear in the order placed
     # Missions will need to be imported, see example missions/utility programs
     # below
-    await add_program(run1, '1', Color.GREEN)
-    await add_program(run2, '2', Color.VIOLET)
-    await add_program(run3, '3', Color.YELLOW)
-    await add_program(run5, '4', Color.ORANGE)
-    await add_program(run4, '5', Color.BLUE)
-    await add_program(run6, '6', Color.RED)
+    # await add_program(run1, '1', Color.GREEN)
 
     # Launch the user interface
     await user_interface()

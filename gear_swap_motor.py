@@ -1,23 +1,60 @@
 from pybricks.parameters import Stop
 from pybricks.pupdevices import Motor
 
-def calculate_simple_gear_ratio(gear_teeth_list):
+def calculate_simple_gear_ratio(gears):
     """
-    Calculates the overall gear ratio for a simple gear train.
-    The list should represent the number of teeth of consecutive gears,
-    e.g., [driver_teeth, driven1_teeth, driven2_teeth, ..., final_driven_teeth].
+    Returns motor_turns / final_gear_turns for a gear train (> 1 means the
+    final gear turns slower than the motor, i.e. a reduction).
+
+    `gears` lists the gears from the motor to the final gear, in order.
+    Each entry is one of:
+
+      int          a gear (tooth count) that meshes with the entry before
+                   and the entry after it. This is a simple chain; every
+                   mesh multiplies the ratio by driven/driver, so idler
+                   gears cancel out.
+
+      (in, out)    a compound gear: two gears fixed on the SAME axle, so
+                   they always turn together. `in` meshes with the entry
+                   before, `out` meshes with the entry after. The axle
+                   itself adds no ratio, only the meshes do.
+
+    The first entry is the gear on the motor and the last is the final gear.
+    Use a plain int for those two (a tuple's `in` on the first entry or `out`
+    on the last entry is ignored).
+
+    Examples:
+      [8, 24]                   8T on motor drives 24T:         ratio 3
+      [8, 16, 24]               16T is an idler:                ratio 3
+      [8, (24, 8), 40]          8T->24T, then 8T (on the same
+                                axle as the 24T) -> 40T:        ratio 3 * 5 = 15
+
+    Common mistake: [8, 24, 8, 40] means FOUR gears meshing in a line
+    (ratio 5, the 24T and 8T are just idlers). If the 24T and 8T share an
+    axle, write (24, 8) as one entry.
+
+    None means no gearing (ratio 1).
     """
-    if gear_teeth_list is None:
+    if gears is None:
         return 1.0
 
-    if len(gear_teeth_list) < 2:
+    if len(gears) < 2:
         raise ValueError("At least two gears are required for a ratio calculation.")
 
     overall_ratio = 1.0
-    for i in range(len(gear_teeth_list) - 1):
-        driver_teeth = gear_teeth_list[i]
-        driven_teeth = gear_teeth_list[i+1]
-        overall_ratio *= (driven_teeth / driver_teeth)
+    previous_out = None
+    for gear in gears:
+        if isinstance(gear, (tuple, list)):
+            if len(gear) != 2:
+                raise ValueError("A compound gear must be (in_teeth, out_teeth).")
+            gear_in, gear_out = gear
+        else:
+            gear_in = gear_out = gear
+
+        if previous_out is not None:
+            # this gear meshes with the previous one: driven / driver
+            overall_ratio *= gear_in / previous_out
+        previous_out = gear_out
     return overall_ratio
 
 #this class allows to change the gear configuration of a motor
@@ -33,7 +70,8 @@ class GearSwapMotor(Motor):
         super().__init__(self.port, self.init_positive_direction)
         print("Motor initialized with positive direction", positive_direction)
 
-        #for simplicity, gears should be a list of integers
+    # gears: see calculate_simple_gear_ratio for how to write a chain
+    # (ints) and compound gears ((in, out) tuples)
     def reconfigure(self, positive_direction, gears):
         print("direction comparison:", self.init_positive_direction == positive_direction)
         if self.init_positive_direction == positive_direction:

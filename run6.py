@@ -1,12 +1,12 @@
 from pybricks.parameters import Color
 from pybricks.tools import run_task, wait,multitask
 from pybricks.parameters import Axis, Direction, Port
-from robot_config import HUB, CENTER_ATTACHMENT, FRONT_ATTACHMENT, DRIVE_BASE
+from robot_config import HUB, LEFT_ATTACHMENT, RIGHT_ATTACHMENT, DRIVE_BASE
 from library import set_drivebase
 
 from pybricks.pupdevices import Motor
 from pybricks.parameters import Axis, Direction, Port
-#CENTER_ATTACHMENT = Motor(Port.D, Direction.COUNTERCLOCKWISE, gears=[20,40])
+#LEFT_ATTACHMENT = Motor(Port.D, Direction.COUNTERCLOCKWISE, gears=[20,40])
 
 
 async def run6():

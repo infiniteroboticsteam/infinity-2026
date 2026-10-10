@@ -3,7 +3,7 @@ User Interface for Pybricks FLL
 """
 
 from pybricks.parameters import Color, Button, Side
-from robot_config import HUB
+from robot_config import HUB, DRIVE_BASE, LEFT_ATTACHMENT, RIGHT_ATTACHMENT
 from pybricks.tools import multitask, wait
 
 ACTIVE_PROGRAM = 0
@@ -55,6 +55,32 @@ async def update_display():
     HUB.display.char(current_program.label)
     HUB.light.on(current_program.color)
 
+async def wait_for_center_release():
+    """Waits until the center button is let go"""
+    while Button.CENTER in HUB.buttons.pressed():
+        await wait(10)
+
+async def wait_for_stop_press():
+    """Finishes when the center button is pressed again during a run"""
+    # Ignore the press that launched the run
+    await wait_for_center_release()
+    while Button.CENTER not in HUB.buttons.pressed():
+        await wait(10)
+
+def stop_all_motors():
+    """Stops the drive base and all attachment motors"""
+    DRIVE_BASE.stop()
+    LEFT_ATTACHMENT.stop()
+    RIGHT_ATTACHMENT.stop()
+
+async def run_program(program:RobotProgram):
+    """Runs a program until it finishes or the center button is pressed.
+    Returns to the menu either way, so the hub does not need to be turned off"""
+    await multitask(program.function(), wait_for_stop_press(), race=True)
+    stop_all_motors()
+    # Don't relaunch the program while the button is still held down
+    await wait_for_center_release()
+
 async def user_interface():
     """
     Main user interface code. Iterates through a program list with the
@@ -80,8 +106,9 @@ async def user_interface():
                 await update_display()
                 await HUB.speaker.beep(500, 200)
             elif Button.CENTER in buttons:
-                # The center button launches the currently selected program
-                await PROGRAM_LIST[ACTIVE_PROGRAM].function()
+                # The center button launches the currently selected program.
+                # Press it again during the run to stop and return to the menu
+                await run_program(PROGRAM_LIST[ACTIVE_PROGRAM])
             else:
                 await wait(10)
         else:

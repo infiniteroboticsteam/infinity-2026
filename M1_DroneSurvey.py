@@ -39,4 +39,4 @@ async def main():
 	print("Return complete")
 
 if __name__ == "__main__":
-	run_task(main())
+	run_task(main()) 

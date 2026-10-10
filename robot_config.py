@@ -32,7 +32,7 @@ class GearSwapMotor(Motor):
         self.gear_ratio = 1
         self.direction_x = 1
 
-        super().__init__(self.port, self.init_positive_direction)
+#        super().__init__(self.port, self.init_positive_direction)
         print("Motor initialized with positive direction", positive_direction)
 
         #for simplicity, gears should be a list of integers
@@ -80,16 +80,17 @@ TURN_ACCELERATION = 700
 #Roger's robot uses a 56 mm wheel diameter and a 114 mm axle track.
 #DL:D, DR:B, RA:A, LA:E, LC:C, RC:F
 #You can change the ports to match your robot configuration.
-DRIVE_LEFT = Motor(Port.D, Direction.CLOCKWISE)
-DRIVE_RIGHT = Motor(Port.B, Direction.COUNTERCLOCKWISE)
+DRIVE_LEFT = Motor(Port.E, Direction.COUNTERCLOCKWISE)
+#DRIVE_LEFT = Motor(Port.F, Direction.COUNTERCLOCKWISE)
+DRIVE_RIGHT = Motor(Port.A, Direction.CLOCKWISE)
 DRIVE_BASE = DriveBase(DRIVE_LEFT, DRIVE_RIGHT, 56, 114)
 
 # set up the attachments, if needed
 #CENTER_ATTACHMENT = Motor(Port.D, Direction.CLOCKWISE)
 print("initializing center attachment")
-RIGHT_ATTACHMENT = GearSwapMotor(Port.A, Direction.COUNTERCLOCKWISE)
-LEFT_ATTACHMENT = GearSwapMotor(Port.E, Direction.COUNTERCLOCKWISE)
-
+RIGHT_ATTACHMENT = GearSwapMotor(Port.B, Direction.COUNTERCLOCKWISE)
+#LEFT_ATTACHMENT = GearSwapMotor(Port.D, Direction.COUNTERCLOCKWISE)
+LEFT_ATTACHMENT = GearSwapMotor(Port.D, Direction.COUNTERCLOCKWISE)
 # default configuration: clockwise, no gears
 # you can change the configuration in your program, e.g.,
 # CENTER_ATTACHMENT.reconfigure(Direction.COUNTERCLOCKWISE, [12, 36])
@@ -98,8 +99,9 @@ LEFT_ATTACHMENT = GearSwapMotor(Port.E, Direction.COUNTERCLOCKWISE)
 
 
 #if you need color sensors, uncomment the following lines
-LEFT_COLOR_SENSOR = ColorSensor(Port.C)
-RIGHT_COLOR_SENSOR = ColorSensor(Port.F)
+#LEFT_COLOR_SENSOR = ColorSensor(Port.F)
+LEFT_COLOR_SENSOR = ColorSensor(Port.F)
+RIGHT_COLOR_SENSOR = ColorSensor(Port.C)
 #print("initializing front attachment")
 #FRONT_ATTACHMENT = GearSwapMotor (Port.C,Direction.CLOCKWISE)
 

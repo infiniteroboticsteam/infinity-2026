@@ -23,7 +23,7 @@ async def run2():
     await DRIVE_BASE.straight(35)
     await DRIVE_BASE.turn(-22)
     await DRIVE_BASE.straight(-185)
-    await DRIVE_BASE.turn(15)
+    #await DRIVE_BASE.turn(15)
     
 
     await multitask(LEFT_ATTACHMENT.run_angle(600,-20),

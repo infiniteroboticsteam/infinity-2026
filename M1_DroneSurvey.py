@@ -5,7 +5,7 @@ from robot_config import DRIVE_BASE, LEFT_ATTACHMENT
 
 async def M1():
 	DRIVE_BASE.use_gyro(True)
-	await wait(1000)
+	
 	await set_drivebase()
 	DRIVE_BASE.settings(
 		straight_speed=400,

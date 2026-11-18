@@ -4,6 +4,7 @@ from library import set_drivebase
 from robot_config import DRIVE_BASE, DRIVE_LEFT, DRIVE_RIGHT, LEFT_ATTACHMENT
 
 async def M1_M2():
+	DRIVE_BASE.use_gyro(True)
 	await set_drivebase()
 	DRIVE_BASE.settings(
 		straight_speed=400,
@@ -11,11 +12,11 @@ async def M1_M2():
 		turn_rate=600,
 		turn_acceleration=600,
 	)
-	DRIVE_BASE.use_gyro(True)
+	
 	print("Driving forward 680 mm while moving the attachment")
 	await multitask(
 		LEFT_ATTACHMENT.run_angle(180, 127),
-		DRIVE_BASE.straight(660),
+		DRIVE_BASE.straight(657),
 	)
 	
 	print("Turning 20 degrees")
@@ -49,7 +50,7 @@ async def M1_M2():
 		turn_rate=200,
 		turn_acceleration=200,
 	)
-	await DRIVE_BASE.straight(200)
+	await DRIVE_BASE.straight(180)
 	await multitask(
 		LEFT_ATTACHMENT.run_angle(90, 18),
 		DRIVE_BASE.straight(100),
@@ -69,6 +70,7 @@ async def M1_M2():
 	await DRIVE_BASE.curve(-400, -60)
 	#await DRIVE_BASE.straight(100)
 	print("Return complete")
+	
 	
 	
 

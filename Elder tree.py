@@ -10,27 +10,45 @@ async def run2():
     DRIVE_BASE.use_gyro(True)
     await wait(300)
 
-    await multitask (DRIVE_BASE.straight(410), RIGHT_ATTACHMENT.run_angle(600,-20))
+    await multitask (DRIVE_BASE.straight(390), RIGHT_ATTACHMENT.run_angle(600,-10))
 
     #await wait(5)
-    await DRIVE_BASE.arc(320,25,None)
-    await DRIVE_BASE.straight(2)
+    await DRIVE_BASE.arc(370,25,None)
+    #await DRIVE_BASE.straight(2)
     #await RIGHT_ATTATCHMENT.
-    await multitask (LEFT_ATTACHMENT.run_angle(600,40),
-                     RIGHT_ATTACHMENT.run_angle(600,-30))
+    await multitask (LEFT_ATTACHMENT.run_angle(600,30),
+                     RIGHT_ATTACHMENT.run_angle(600,-20))
     #await LEFT_ATTACHMENT.run_angle(100,40)
-    await DRIVE_BASE.straight(-50)
-    await DRIVE_BASE.straight(35)
-    await DRIVE_BASE.turn(-22)
-    await DRIVE_BASE.straight(-185)
+    return
+    await DRIVE_BASE.straight(-60)
+    await DRIVE_BASE.straight(50)
+    await DRIVE_BASE.turn(-21)  
+    await DRIVE_BASE.turn(1)
+
+    await DRIVE_BASE.straight(-200)
     #await DRIVE_BASE.turn(15)
     
 
     await multitask(LEFT_ATTACHMENT.run_angle(600,-20),
                     RIGHT_ATTACHMENT.run_angle(600,50))
-    await multitask(DRIVE_BASE.turn(-15),
-                    LEFT_ATTACHMENT.run_angle(600,-20))
-    await DRIVE_BASE.straight(-300)
+    #await multitask(DRIVE_BASE.turn(-15), LEFT_ATTACHMENT.run_angle(600,-20))
+    #await LEFT_ATTACHMENT.run_angle(600,-0)
+    await DRIVE_BASE.straight(-290)
+    #await DRIVE_BASE.straight(-100)
+    return
+    await DRIVE_BASE.turn(-20) 
+    await RIGHT_ATTACHMENT.run_angle(600,-30)
+    #await wait(500)
+    await multitask (DRIVE_BASE.straight(290),
+                    LEFT_ATTACHMENT.run_angle(600,-200))
+    await DRIVE_BASE.turn(-10)
+    await DRIVE_BASE.straight(100)
+    await DRIVE_BASE.turn(27)
+    await multitask (DRIVE_BASE.straight(260), 
+                     RIGHT_ATTACHMENT.run_angle(600,-20))
+    await RIGHT_ATTACHMENT.run_angle(600,95)
+    await RIGHT_ATTACHMENT.run_angle(600,-95)
+    await DRIVE_BASE.straight(-800)
 
     DRIVE_BASE.use_gyro(False) 
 

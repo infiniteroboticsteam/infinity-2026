@@ -17,6 +17,8 @@ async def ArmReset():
 	await multitask(
 		LEFT_ATTACHMENT.run_target(360, 40),
 		RIGHT_ATTACHMENT.run_target(360, 40),
+		DRIVE_LEFT.run_target(360, 0),
+		DRIVE_RIGHT.run_target(360, 0),
 	)
 	#await DRIVE_BASE.curve(-200, 70)
 	#await DRIVE_BASE.straight(800)

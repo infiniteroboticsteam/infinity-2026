@@ -16,15 +16,7 @@ async def M14():
         turn_acceleration=400,
     )
 
-    await multitask(
-            RIGHT_ATTACHMENT.run_angle(360, 180),
-            DRIVE_BASE.straight(650),
-    )
-
-    await DRIVE_BASE.turn(-48)
-    await wait(1500)
-    await DRIVE_BASE.straight(130)
-    await RIGHT_ATTACHMENT.run_angle(360, -60)
-    await DRIVE_BASE.curve(-350, -160)
+    await DRIVE_BASE.straight(300)
+    await DRIVE_BASE.straight(-300) 
 if __name__ == "__main__":
     run_task(M14())

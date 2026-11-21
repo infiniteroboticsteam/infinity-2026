@@ -13,8 +13,8 @@ async def M7():
 	DRIVE_BASE.use_gyro(True)
 	await DRIVE_BASE.straight(100)
 	await DRIVE_BASE.curve(200,90)
-	await DRIVE_BASE.straight(500)
-	await DRIVE_BASE.curve(-400,90)
+	await DRIVE_BASE.straight(450)
+	await DRIVE_BASE.curve(-500,90)
 
 if __name__ == "__main__":
 	run_task(M7())

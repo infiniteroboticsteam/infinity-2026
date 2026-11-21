@@ -4,7 +4,8 @@ This guide walks you through everything you need to contribute to
 `infiniteroboticsteam/infinity-2026`: creating a GitHub account, generating an
 SSH key, connecting it to GitHub, and cloning the repository.
 
-You only need to do this once per computer.
+You only need to do this once per computer. When you're done, continue with
+[Getting Started](GETTING_STARTED.md) to set up the robot and VS Code.
 
 ---
 

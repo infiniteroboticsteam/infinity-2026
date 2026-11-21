@@ -22,5 +22,6 @@ async def main():
         wait(0),
     )
 
-
-run_task(main())
+
+if __name__ == "__main__":
+    run_task(main())

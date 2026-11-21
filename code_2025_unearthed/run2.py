@@ -1,42 +1,32 @@
-from pybricks.parameters import Color, Direction, Stop
 from pybricks.tools import multitask, run_task, wait
-from robot_config import RIGHT_ATTACHMENT, DRIVE_BASE, HUB, LEFT_ATTACHMENT
+from pybricks.parameters import Stop
+from library import set_drivebase
+from robot_config import DRIVE_BASE, LEFT_ATTACHMENT
 
+async def M1():
+	DRIVE_BASE.use_gyro(True)
+	await wait(1000)
+	await set_drivebase()	
+	DRIVE_BASE.settings(
+		straight_speed=400,
+		straight_acceleration=200,
+		turn_rate=600,
+		turn_acceleration=600,
+	)
+	await set_drivebase()	
+	print("Turning -20 degrees")
+	await DRIVE_BASE.turn(-180)
 
-async def run2():
-    LEFT_ATTACHMENT.reconfigure(Direction.COUNTERCLOCKWISE,gears=[12,36])
-    RIGHT_ATTACHMENT.reconfigure(Direction.CLOCKWISE,gears=[28,36])
-    DRIVE_BASE.settings(straight_speed=700, straight_acceleration=700)
-    DRIVE_BASE.use_gyro(True)
-    await wait(300)
-
-    await DRIVE_BASE.straight(285)    
-    await DRIVE_BASE.turn(53)
-    await DRIVE_BASE.straight(230)
-    #turn shopping stall and flip scale
-    await multitask(RIGHT_ATTACHMENT.run_angle(180,110,then=Stop.COAST),
-                    LEFT_ATTACHMENT.run_angle(180,110))
-    await LEFT_ATTACHMENT.run_angle(180,-90)
-    #return
-    #pullback stall roof
-    DRIVE_BASE.settings(straight_speed=250, straight_acceleration=300)
-    await DRIVE_BASE.turn(-90)
-    #await DRIVE_BASE.straight(-10)
-    await DRIVE_BASE.turn(90)
-    await DRIVE_BASE.straight(20)
-
-    await LEFT_ATTACHMENT.run_angle(180,90)
-    await DRIVE_BASE.straight(-300)
-    await LEFT_ATTACHMENT.run_angle(180,-30) 
-    await DRIVE_BASE.straight(100)
-    await LEFT_ATTACHMENT.run_angle(180,-60)
-    DRIVE_BASE.settings(straight_speed=700, straight_acceleration=700)
-    #await DRIVE_BASE.arc(radius=400, distance=-300)
-    #await DRIVE_BASE.straight(-300)
-    await DRIVE_BASE.arc(radius=750, distance=-600)
-
-    DRIVE_BASE.use_gyro(False) 
-
+	DRIVE_BASE.settings(
+			straight_speed=400,
+			straight_acceleration=200,
+			turn_rate=100,
+			turn_acceleration=100,
+		)
+	
+	print("Turning -20 degrees")
+	await DRIVE_BASE.turn(-180)
+	
 
 if __name__ == "__main__":
-    run_task(run2())
+	run_task(M1())

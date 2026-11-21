@@ -1,146 +1,74 @@
 # INFINITE ROBOTICS TEAM 2026
 
-Starter code for Pybricks / FLL.
+Robot code for Pybricks / FLL.
 
 GitHub URL: https://github.com/infiniteroboticsteam/infinity-2026
 
 Our driving base is based on the Nautiq Box:
 https://www.fllcasts.com/materials/3056-nautiq-lego-education-spike-prime-box-robot
 
-> **New to Git/GitHub?** Follow the [Developer Setup Guide](docs/SETUP.md)
-> first — it covers creating a GitHub account, generating an SSH key, and
-> cloning this repo. The steps below assume you can already clone the repo.
+## Documentation
 
----
+New to the team? Read these in order. No Python experience is needed.
 
-# 1. Set up the hub
+| # | Guide | What you'll learn |
+|---|---|---|
+| 1 | [Developer Setup (Git & GitHub)](docs/SETUP.md) | Make a GitHub account, create an SSH key, clone the repo, and share your work with Git. |
+| 2 | [Getting Started](docs/GETTING_STARTED.md) | Install Pybricks on the hub, install Python and VS Code, and run your first program on the robot. |
+| 3 | [Python Basics](docs/PYTHON_BASICS.md) | Just the Python you need: variables, functions, `async`/`await`, loops, imports, and how to read errors. |
+| 4 | [Code Guide](docs/CODE_GUIDE.md) | How the files fit together, robot profiles (ports, wheels, hub orientation), the hub menu, and gear-swap attachments. |
+| 5 | [Writing Runs](docs/WRITING_RUNS.md) | Write, tune, and register a run for a mission. |
+| 6 | [Testing and Troubleshooting](docs/TESTING_AND_TROUBLESHOOTING.md) | Test scripts, calibration, and fixes for common problems. |
 
-1. Connect your hub to your computer with a USB cable.
-2. Go to https://code.pybricks.com/, click **Install Pybricks Firmware** on the
-   left, and follow the instructions to install the Pybricks firmware on your hub.
-3. When prompted, give your hub a name (e.g. `infinite-1`). You'll need this
-   name later to run code from VS Code.
-4. You can use the web interface at code.pybricks.com to write code and control
-   the hub directly. The rest of this guide sets up VS Code instead.
+## Quick start (if you've done the setup)
 
-# 2. Install Python
+1. Turn on your hub, open `TestRun.py` in VS Code, and press **F5**.
+2. **Create a profile for your driving base** in `robot_profiles.py`
+   ([how](docs/GETTING_STARTED.md#6-create-a-profile-for-your-driving-base)),
+   then run `port_test.py`.
+3. Copy `M1_DroneSurvey.py`, edit it, and press **F5** to test your run.
+4. When it works, add it to the menu in `robot.py`.
 
-Download and install Python from https://www.python.org/downloads/.
-
-On **Windows**, check **"Add python.exe to PATH"** in the installer.
-
-# 3. Windows only: allow PowerShell scripts
-
-VS Code activates the Python virtual environment with a PowerShell script,
-which Windows blocks by default. Open PowerShell (no admin needed) and run:
-
-```powershell
-Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-```
-
-Answer `Y` if prompted.
-
-# 4. Set up VS Code
-
-1. Download and install VS Code: https://code.visualstudio.com/download
-2. Install the **Python** extension (this also installs Pylance).
-3. Clone this repo: click **Source Control** on the left (or press
-   `Ctrl+Shift+G`), choose **Clone Repository**, and enter
-   `git@github.com:infiniteroboticsteam/infinity-2026.git`.
-   Open the cloned folder when prompted.
-4. Open the Command Palette (`Ctrl+Shift+P` on Windows, `Cmd+Shift+P` on Mac),
-   type **Python: Create Environment**, choose **Venv**, and pick the Python
-   you installed in step 2.
-5. Open the Command Palette again, run **Python: Create Terminal**, and in that
-   terminal install the tools:
-
-   ```bash
-   pip install pybricks pybricksdev
-   ```
-
-6. Open `.vscode/launch.json` and change `infinite-1` to your hub's name.
-   **Do not commit this change** — everyone's hub name is different.
-7. Turn on your hub, open `TestRun.py`, and press **F5**. The code is sent to
-   the hub over Bluetooth and runs. Output from `print()` appears in the VS
-   Code terminal.
-
-   If F5 doesn't work, you can run the same thing from the terminal:
-
-   ```bash
-   pybricksdev run ble --name infinite-1 TestRun.py
-   ```
-
----
-
-# Code structure
+## Project layout
 
 | File / folder | Purpose |
 |---|---|
-| `robot_config.py` | Parameters for the driving base (wheel size, axle track, motor ports, sensor ports) and the `GearSwapMotor` helper for attachments with swappable gearing. |
-| `library.py` | Shared helpers: `set_drivebase()` applies our speed/acceleration settings, `print_drivebase_settings()` prints the current ones. |
-| `run1.py` … `run6.py` | One file per **run**. Each defines an `async def runN()` that drives the base and moves attachments to complete its missions. |
-| `run_silo.py` | Test script for the center attachment. |
-| `ui.py` | Hub menu: `add_program()` registers a run under a button/color; `user_interface()` lets you pick and start runs with the hub buttons. |
-| `robot.py` | **The competition program.** Imports all runs, registers them with `ui.py`, and starts the menu. Laptops/tablets are not allowed at the table, so this is what runs on the hub. |
-| `TestRun.py` | Drives one wheel rotation forward — use it to check the hub connection and calibrate `robot_config.py`. |
-| `DetactPort.py` | Lists which motor/sensor is plugged into each port. |
-| `advanced/` | Optional extras: `music_library.py` and `measurement/` (calibration tools, Xbox controller teleop). See `advanced/README.md`. |
-| `depreciated/` | Last season's code, kept for reference. `run_demo_1` … `run_demo_6` are tutorials on the drive base, motors, and sensors — read them in order if you're new to Pybricks. See `depreciated/README.md`. |
-| `docs/` | Team documentation (Git/SSH setup guide). |
+| `robot_profiles.py` | One entry per hub: ports, motor directions, wheel size, hub orientation. |
+| `robot_config.py` | Builds the drive base, hub, attachments, and sensors from the profile. |
+| `library.py` | Shared helpers such as `set_drivebase()`. |
+| `gear_swap_motor.py` | Attachment motor that understands gear ratios. |
+| `ui.py` | Hub-button menu for choosing a run. |
+| `robot.py` | **The competition program.** Registers the runs and starts the menu. |
+| `M1_DroneSurvey.py`, `RogerRun.py` | Runs. |
+| `TestRun.py` | Drive one wheel rotation; checks the connection and wheel size. |
+| `port_test.py`, `detect_port.py`, `color_test.py` | Hardware checks for ports, motors, and color sensors. |
+| `gear_swap_test.py`, `gear_swap_motor_test.py` | Tests for the gear ratio math and for gear-swapped motors. |
+| `docs/` | Team guides (above). |
+| `advanced/` | Optional extras: music, measurement tools, Xbox controller driving. |
+| `code_2025_unearthed/` | Last season's runs, kept for reference. |
+| `depreciated/` | Older code, including `run_demo_1` … `run_demo_6` tutorials. |
 
-## What is a run?
+The archive folders were written for an older `robot_config.py` and need
+updating before they will run. Details in the [Code Guide](docs/CODE_GUIDE.md#file-map).
 
-A **run** is a trip where the driving base, with attachments installed, starts
-from a launch area and returns to a home or launch area. One run can complete
-several missions.
+## Notes
 
-## Writing a new run
+- Pybricks runs **MicroPython**, a subset of Python. The upload tool sends your
+  file plus the modules it imports from the **same folder**, so keep runs and
+  shared modules in the repo root.
+- Laptops and tablets are not allowed at the table, so the competition program
+  is `robot.py`, which runs from the hub's buttons.
 
-1. Copy `run1.py` to the next free number (e.g. `run7.py`) and rename the
-   function inside to match (`async def run7()`).
-2. Define a function per attachment movement needed for each mission.
-3. Write the driving path. At the appropriate waypoints (by distance or turn),
-   call the attachment functions.
-4. Test the run on its own: open the file and press **F5**.
-5. When it works, add it to `robot.py`:
-   ```python
-   from run7 import run7
-   ...
-   await add_program(run7, '7', Color.WHITE)
-   ```
-   Match the color to the color marker on the attachment so it's easy to pick
-   the right one at the table.
+## References
 
-## Uploading your code with Git
-
-See the [Developer Setup Guide](docs/SETUP.md#6-daily-workflow) for the
-pull → branch → commit → push → pull request workflow.
-
-* If you changed the hub name in `.vscode/launch.json`, do not include that
-  file in your commit.
-* Don't commit `__pycache__/` — it's already in `.gitignore`.
-
----
-
-# Notes
-
-## Pybricks is MicroPython, not full Python
-
-MicroPython on the SPIKE Prime hub includes only a subset of the standard
-library. `pybricksdev` uploads the file you run plus any modules it imports
-from the **same folder**, so keep runs and shared modules in the repo root —
-packages in subfolders won't work on the hub.
-
-# References
-
-## Gears
+### Gears
 
 Introduction to gears:
 
 - [Part 1](https://community.legoeducation.com/blogs/31/64)
 - [Part 2](https://community.legoeducation.com/blogs/31/70)
 
-# Credits
+## Credits
 
 * The original code was forked from
   https://github.com/MonongahelaCryptidCooperative/FLL-2025-2026.

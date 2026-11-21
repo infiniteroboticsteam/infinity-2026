@@ -2,7 +2,7 @@ from pybricks.tools import multitask, run_task, wait
 from library import set_drivebase
 from robot_config import DRIVE_BASE, DRIVE_LEFT, DRIVE_RIGHT, LEFT_ATTACHMENT, RIGHT_ATTACHMENT
 
-async def M7():
+async def M7_M13():
 	await set_drivebase()
 	DRIVE_BASE.settings(
 		straight_speed=300,
@@ -38,4 +38,4 @@ async def M7():
 	# await DRIVE_BASE.curve(-500,30)
 	
 if __name__ == "__main__":
-	run_task(M7())
+	run_task(M7_M13())

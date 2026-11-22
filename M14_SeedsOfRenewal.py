@@ -18,5 +18,6 @@ async def M14():
 
     await DRIVE_BASE.straight(300)
     await DRIVE_BASE.straight(-300) 
+    await RIGHT_ATTACHMENT.run_target(360, 29)
 if __name__ == "__main__":
     run_task(M14())

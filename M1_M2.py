@@ -20,7 +20,7 @@ async def M1_M2():
 	)
 	
 	print("Turning 20 degrees")
-	await DRIVE_RIGHT.run_angle(360, 280)
+	await DRIVE_RIGHT.run_angle(360, 285)
 	
 	print("Turning 55 degrees Completed")
 	

@@ -15,78 +15,44 @@ async def M12():
 	
 	await set_drivebase()
 	DRIVE_BASE.settings(
-		straight_speed=300,
+		straight_speed=500,
 		straight_acceleration=500,
 		turn_rate=600,
 		turn_acceleration=600,
 	)
 	DRIVE_BASE.use_gyro(True)
-	#RIGHT_ATTACHMENT.dc(100)
-	await DRIVE_BASE.turn(15)
-	await LEFT_ATTACHMENT.run_angle(100, -90)
-	#await LEFT_ATTACHMENT.run_angle(300, 20)	
-	#await DRIVE_BASE.turn(45)
-	
-	await DRIVE_BASE.straight(270)
-	await LEFT_ATTACHMENT.run_angle(50, 40)
-	await DRIVE_BASE.straight(-180)
-	await set_drivebase()
-	DRIVE_BASE.settings(
-		straight_speed=300,
-		straight_acceleration=500,
-		turn_rate=50,
-		turn_acceleration=50,
-	)
-	await DRIVE_BASE.turn(11)
-	#await LEFT_ATTACHMENT.run_angle(50, -60),
-	#await DRIVE_BASE.straight(-60)
-	#await DRIVE_BASE.turn(-10)
+
+	"""
+	await DRIVE_BASE.arc(1200, 25)
+	await RIGHT_ATTACHMENT.run_angle(50, -20)
+	await DRIVE_RIGHT.run_angle(50,-75)
 	await multitask(
-			LEFT_ATTACHMENT.run_angle(50, -70),
-			DRIVE_BASE.straight(-65),
-		)
-	#await LEFT_ATTACHMENT.run_angle(50, 100)
+		DRIVE_BASE.straight(-100),
+		RIGHT_ATTACHMENT.run_angle(50,10),
+	)
+
+	"""
+	await DRIVE_BASE.straight(350)
+	await RIGHT_ATTACHMENT.run_angle(50, -50)
+	await wait(2000)
+	await multitask(
+		RIGHT_ATTACHMENT.run_angle(50, 70),
+		DRIVE_BASE.straight(-36),
+	)
+	#await DRIVE_BASE.straight(-40)
+	
+	
 	await set_drivebase()
 	DRIVE_BASE.settings(
 		straight_speed=500,
-		straight_acceleration=400,
-		turn_rate=500,
-		turn_acceleration=500,
+		straight_acceleration=100,
+		turn_rate=600,
+		turn_acceleration=600,
 	)
-	await DRIVE_BASE.turn(-40)
-	await multitask(
-		LEFT_ATTACHMENT.run_angle(200, 110),
-		DRIVE_BASE.straight(710),
-	)
-	#await DRIVE_BASE.turn(-40)
+	await DRIVE_BASE.straight(-260)
+	#await RIGHT_ATTACHMENT.run_angle(50, 40)
+	#await DRIVE_BASE.turn(-30)
+	#await DRIVE_BASE.straight(-100)
 	
-	await DRIVE_BASE.turn(85)
-	#await DRIVE_BASE.curve(-200,70)
-	await DRIVE_BASE.straight(120)
-	await RIGHT_ATTACHMENT.run_angle(50, -60)
-	await multitask(
-		RIGHT_ATTACHMENT.run_angle(50, 60),
-		DRIVE_BASE.straight(-120),
-	)
-	await DRIVE_BASE.turn(18)
-	await RIGHT_ATTACHMENT.run_angle(50, -60)
-	await DRIVE_BASE.turn(60)
-	await DRIVE_BASE.straight(600)
-	await RIGHT_ATTACHMENT.run_angle(50, 60)
-	"""
-	
-	await DRIVE_BASE.turn(-60)
-	await DRIVE_BASE.straight(-800)
-	"""
-
-	#print("Driving forward one wheel rotation")
-	#await DRIVE_BASE.straight(ONE_WHEEL_ROTATION)
-	#print("Driving backward one wheel rotation")
-	#await DRIVE_BASE.straight(-ONE_WHEEL_ROTATION
-	#await DRIVE_BASE.straight(300)
-	#await DRIVE_BASE.straight(-300)
-	#await DRIVE_BASE.turn(90)
-	#await DRIVE_BASE.straight(100)
-
 if __name__ == "__main__":
 	run_task(M12())

@@ -11,14 +11,10 @@ from robot_config import DRIVE_BASE, DRIVE_LEFT, DRIVE_RIGHT, LEFT_ATTACHMENT, R
 
 
 async def ArmReset():
-	#RIGHT_ATTACHMENT.dc(100)
-	#await RIGHT_ATTACHMENT.run_angle(300, 300)
-	#await DRIVE_BASE.turn(45)
+	#RIGHT_ATTACHMENT.run_target(360, 29) M12 Arm Reset Position
 	await multitask(
-		LEFT_ATTACHMENT.run_target(360, 40),
-		RIGHT_ATTACHMENT.run_target(360, 40),
-		DRIVE_LEFT.run_target(360, 0),
-		DRIVE_RIGHT.run_target(360, 0),
+		LEFT_ATTACHMENT.run_target(360, 44),
+		RIGHT_ATTACHMENT.run_target(360, 29),
 	)
 	#await DRIVE_BASE.curve(-200, 70)
 	#await DRIVE_BASE.straight(800)

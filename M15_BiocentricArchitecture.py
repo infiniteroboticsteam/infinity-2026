@@ -19,10 +19,8 @@ async def M15():
     await DRIVE_BASE.straight(460)
     await DRIVE_BASE.turn(45)
     #The one was 300
-    await DRIVE_BASE.straight(250)
-    await RIGHT_ATTACHMENT.run_angle(100,55)
-    await DRIVE_BASE.straight(38)
-    
+    await DRIVE_BASE.straight(290)
+    await RIGHT_ATTACHMENT.run_angle(100,75)
     await DRIVE_RIGHT.run_angle(360, 193)
     await DRIVE_BASE.straight(85)
     
@@ -31,7 +29,7 @@ async def M15():
     #await DRIVE_BASE.straight(-220)
     
     #await RIGHT_ATTACHMENT.run_angle(75, -195)
-    await DRIVE_BASE.curve(-1000,60)
+    await DRIVE_BASE.curve(-1000,50)
     #await DRIVE_BASE.curve(-900, 50),
     #await DRIVE_BASE.straight(-800)
     #await RIGHT_ATTACHMENT.run_angle(360,  290)

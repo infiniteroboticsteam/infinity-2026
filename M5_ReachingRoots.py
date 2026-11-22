@@ -15,7 +15,7 @@ async def M5():
         turn_acceleration=400,
     )
     DRIVE_BASE.use_gyro(True)
-    #await RIGHT_ATTACHMENT.run_angle(1000, -180)
+    
     await RIGHT_ATTACHMENT.run_angle(1000, -90),
     await DRIVE_BASE.straight(790),
     

@@ -13,7 +13,7 @@ async def M3_M4():
         turn_rate=100,
         turn_acceleration=400,
     )
-
+    
     # Step 2: Move into position and prepare the attachment to flip the rock.
     print("Step 2: Moving into position to flip the rock")
     await RIGHT_ATTACHMENT.run_angle(180, -100)

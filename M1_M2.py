@@ -53,7 +53,7 @@ async def M1_M2():
 	await DRIVE_BASE.straight(180)
 	await multitask(
 		LEFT_ATTACHMENT.run_angle(90, 18),
-		DRIVE_BASE.straight(100),
+		DRIVE_BASE.straight(80),
 	)
 	await wait(500)
 	DRIVE_BASE.settings(

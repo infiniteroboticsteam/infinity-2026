@@ -16,7 +16,7 @@ async def M5():
     )
     DRIVE_BASE.use_gyro(True)
     
-    await RIGHT_ATTACHMENT.run_angle(1000, -90),
+    await RIGHT_ATTACHMENT.run_angle(1000, -270)
     await DRIVE_BASE.straight(790),
     
     RIGHT_ATTACHMENT.control.limits(

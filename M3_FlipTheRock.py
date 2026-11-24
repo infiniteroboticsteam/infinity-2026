@@ -17,7 +17,12 @@ async def M3():
     # Step 2: Move into position and prepare the attachment to flip the rock.
     print("Step 2: Moving into position to flip the rock")
     await DRIVE_BASE.straight(300)
-    await DRIVE_BASE.straight(-300)
+    await multitask(
+        DRIVE_BASE.straight(-300),
+        RIGHT_ATTACHMENT.run_angle(1000, -90),
+
+    )
+    
 
 if __name__ == "__main__":
     run_task(M3())

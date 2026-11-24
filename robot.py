@@ -8,7 +8,7 @@ from M15_BiocentricArchitecture import M15
 import M3_M4 as M3_M4
 from M4_LuckyLeaves import M4
 from M5_ReachingRoots import M5
-from M6_M11_LeafcutterFrenzy_V2 import M6_M11
+from M6_M11_LeafcutterFrenzy import M6_M11
 from M7_Mycelium import M7
 from M7_M13 import M7_M13
 from M9_ResearchPlatform_R import M9
@@ -20,12 +20,6 @@ from ui import add_program, user_interface
 from M1_DroneSurvey import M1
 from M1_M2 import M1_M2
 from M3_FlipTheRock import M3
-#from run1 import run1
-#from run2 import run2
-#from run3 import run3
-#from run4 import run4
-#from run5 import run5
-#from run6 import run6
 
 async def main():
     # Import from xbox_teleop the teleop function if you want to use

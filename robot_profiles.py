@@ -52,7 +52,7 @@ PROFILES = {
         "hub_front_side": - Axis.Y,
         "wheel_diameter": 56,  # mm
         "axle_track": 112,     # mm
-        "drive_left": {"port": Port.D, "direction": Direction.CLOCKWISE},
+        "drive_left": {"port": Port.F, "direction": Direction.CLOCKWISE},
         "drive_right": {"port": Port.B, "direction": Direction.COUNTERCLOCKWISE},
         "left_attachment": {"port": Port.E, "direction": Direction.COUNTERCLOCKWISE},
         "right_attachment": {"port": Port.A, "direction": Direction.COUNTERCLOCKWISE},
@@ -65,11 +65,11 @@ PROFILES = {
         "hub_front_side": - Axis.Y,
         "wheel_diameter": 56,  # mm
         "axle_track": 114,     # mm
-        "drive_left": {"port": Port.D, "direction": Direction.COUNTERCLOCKWISE},
-        "drive_right": {"port": Port.E, "direction": Direction.CLOCKWISE},
+        "drive_left": {"port": Port.B, "direction": Direction.COUNTERCLOCKWISE},
+        "drive_right": {"port": Port.F, "direction": Direction.CLOCKWISE},
         "left_attachment": {"port": Port.A, "direction": Direction.COUNTERCLOCKWISE},
-        "right_attachment": {"port": Port.B, "direction": Direction.COUNTERCLOCKWISE},
-        "left_color_sensor": Port.F,
+        "right_attachment": {"port": Port.E, "direction": Direction.COUNTERCLOCKWISE},
+        "left_color_sensor": Port.D,
         "right_color_sensor": Port.C,
     },
     "Howard": {
@@ -120,6 +120,18 @@ PROFILES = {
         "right_attachment": {"port": Port.A, "direction": Direction.COUNTERCLOCKWISE},
         "left_color_sensor": Port.C,
         "right_color_sensor": Port.D,
+        },
+    "HowardHub": {
+        "hub_top_side": Axis.Z,
+        "hub_front_side": - Axis.Y,
+        "wheel_diameter": 56,  # mm
+        "axle_track": 114,     # mm
+        "drive_left": {"port": Port.D, "direction": Direction.CLOCKWISE},
+        "drive_right": {"port": Port.F, "direction": Direction.COUNTERCLOCKWISE},
+        "left_attachment": {"port": Port.C, "direction": Direction.COUNTERCLOCKWISE},
+        "right_attachment": {"port": Port.A, "direction": Direction.COUNTERCLOCKWISE},
+        "left_color_sensor": Port.E,
+        "right_color_sensor": Port.B,
         },
 }
 

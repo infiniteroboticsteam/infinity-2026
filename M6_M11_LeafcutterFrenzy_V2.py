@@ -7,17 +7,24 @@ from robot_config import DRIVE_BASE
 async def M6_M11():    
     set_drivebase()
     DRIVE_BASE.settings(
-        straight_speed=500,
-        straight_acceleration=200,
+        straight_speed=900,
+        straight_acceleration=900,
         turn_rate=200,
         turn_acceleration=200,
     )
     DRIVE_BASE.use_gyro(True)
-    await DRIVE_BASE.arc(600,95)
-    await DRIVE_BASE.straight(100)
+    await DRIVE_BASE.arc(580,85)
+    DRIVE_BASE.settings(
+        straight_speed=900,
+        straight_acceleration=400,
+        turn_rate=200,
+        turn_acceleration=200,
+    )
+    await DRIVE_BASE.straight(175)
     await DRIVE_BASE.straight(-100)
     await DRIVE_BASE.turn(-60) 
-    await DRIVE_BASE.arc(400,95)
+    await DRIVE_BASE.arc(350,100)
+    await DRIVE_BASE.straight(125)
     await DRIVE_LEFT.run_angle(360, -340)  # step 7 push leaves
     DRIVE_BASE.settings(
         straight_speed=100,
@@ -33,6 +40,12 @@ async def M6_M11():
         turn_acceleration=200,
     )
     await DRIVE_BASE.straight(-40)  # step 10 back up from handle
+    DRIVE_BASE.settings(
+        straight_speed=900,
+        straight_acceleration=900,
+        turn_rate=200,
+        turn_acceleration=200,
+    )
     await DRIVE_BASE.turn(83)  # step 11 turn away from leaves
     await DRIVE_BASE.straight(800)  # step 12 go home
     """

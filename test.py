@@ -13,7 +13,7 @@ async def main():
 		turn_rate=100,
 		turn_acceleration=400,
 	)
-	await DRIVE_BASE.straight(600)
+	await LEFT_ATTACHMENT.run_angle(1000, -90)
 	await wait(500)
 
 if __name__ == "__main__":

@@ -4,15 +4,16 @@ from pybricks.tools import multitask, run_task, wait
 from M12_ForestElder import M12
 from M13_KeystoneSpecies import M13
 from M14_SeedsOfRenewal import M14
-from M15_BiocentricArchitecture import M15
+from M15_BiocentricArchitecture_v2 import M15
 import M3_M4 as M3_M4
 from M4_LuckyLeaves import M4
 from M5_ReachingRoots import M5
-from M6_M11_LeafcutterFrenzy_V2 import M6_M11
+from M6_M11_LeafcutterFrenzy import M6_M11
 from M7_Mycelium import M7
 from M7_M13 import M7_M13
 from M9_ResearchPlatform_R import M9
-from RobotMotorReset import ArmReset
+from ResetArmPosition import ResetArmPosition
+from RobotMotorReset import RobotMotorReset
 from BatteryTest import BatteryTest
 from library import set_drivebase, print_drivebase_settings
 from ui import add_program, user_interface
@@ -20,12 +21,6 @@ from ui import add_program, user_interface
 from M1_DroneSurvey import M1
 from M1_M2 import M1_M2
 from M3_FlipTheRock import M3
-#from run1 import run1
-#from run2 import run2
-#from run3 import run3
-#from run4 import run4
-#from run5 import run5
-#from run6 import run6
 
 async def main():
     # Import from xbox_teleop the teleop function if you want to use
@@ -59,7 +54,8 @@ async def main():
     await add_program(M15, 'C', Color.RED) #biocentric architecture
     await add_program(M14, 'D', Color.RED) #seeds of renewal
     await add_program(M12, 'E', Color.RED) #forest elder
-    await add_program(ArmReset, 'R', Color.RED)
+    await add_program(ResetArmPosition, 'R', Color.RED)
+    await add_program(RobotMotorReset, 'M', Color.RED)
     await add_program(BatteryTest, 'T', Color.RED)
     
     #await add_program(run4, '5', Color.BLUE)

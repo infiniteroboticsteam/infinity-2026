@@ -15,8 +15,12 @@ async def M5():
         turn_acceleration=400,
     )
     DRIVE_BASE.use_gyro(True)
-    
-    await RIGHT_ATTACHMENT.run_angle(1000, -90),
+
+    #await multitask(
+    #    RIGHT_ATTACHMENT.run_angle(1000, -180),
+    #    DRIVE_BASE.straight(790),
+    #)
+    await RIGHT_ATTACHMENT.run_angle(1000, -180)
     await DRIVE_BASE.straight(790),
     
     RIGHT_ATTACHMENT.control.limits(
@@ -24,7 +28,7 @@ async def M5():
         acceleration=20000,
         torque=1000,
     )
-    await RIGHT_ATTACHMENT.run_angle(1000, 180)    
+    await RIGHT_ATTACHMENT.run_angle(1000, 270)    
     await DRIVE_BASE.straight(-800),
     
     

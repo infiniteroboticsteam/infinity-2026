@@ -10,11 +10,11 @@ from robot_config import DRIVE_BASE, DRIVE_LEFT, DRIVE_RIGHT, LEFT_ATTACHMENT, R
 #ONE_WHEEL_ROTATION = pi * WHEEL_DIAMETER
 
 
-async def ArmReset():
+async def RobotMotorReset():
 	#RIGHT_ATTACHMENT.run_target(360, 29) M12 Arm Reset Position
 	await multitask(
-		LEFT_ATTACHMENT.run_target(360, 44),
-		RIGHT_ATTACHMENT.run_target(360, 29),
+		DRIVE_LEFT.run_target(360, 0),
+		DRIVE_RIGHT.run_target(360, 0),
 	)
 	#await DRIVE_BASE.curve(-200, 70)
 	#await DRIVE_BASE.straight(800)
@@ -34,4 +34,4 @@ async def ArmReset():
 	#await DRIVE_BASE.straight(100)
 
 if __name__ == "__main__":
-	run_task(ArmReset())
+	run_task(RobotMotorReset())

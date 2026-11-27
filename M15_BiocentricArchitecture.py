@@ -12,7 +12,7 @@ async def M15():
     DRIVE_BASE.settings(
         straight_speed=500,
         straight_acceleration=300,
-        turn_rate=100,
+        turn_rate=500,
         turn_acceleration=400,
     )
     
@@ -20,12 +20,12 @@ async def M15():
     await DRIVE_BASE.turn(45)
     #The one was 300
     await DRIVE_BASE.straight(290)
-    await RIGHT_ATTACHMENT.run_angle(100,75)
+    await RIGHT_ATTACHMENT.run_angle(500,75)
     await DRIVE_RIGHT.run_angle(360, 193)
     await DRIVE_BASE.straight(85)
     
     await DRIVE_BASE.straight(-55)
-    await DRIVE_BASE.turn(38)
+    await DRIVE_BASE.turn(30)
     #await DRIVE_BASE.straight(-220)
     
     #await RIGHT_ATTACHMENT.run_angle(75, -195)

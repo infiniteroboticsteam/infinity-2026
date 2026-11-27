@@ -32,11 +32,12 @@ async def M12():
 	)
 
 	"""
+	await RIGHT_ATTACHMENT.run_angle(100,-30)
 	await DRIVE_BASE.straight(350)
-	await RIGHT_ATTACHMENT.run_angle(50, -50)
+	await RIGHT_ATTACHMENT.run_angle(50, -70)
 	await wait(2000)
 	await multitask(
-		RIGHT_ATTACHMENT.run_angle(50, 70),
+		RIGHT_ATTACHMENT.run_angle(50, 90),
 		DRIVE_BASE.straight(-36),
 	)
 	#await DRIVE_BASE.straight(-40)

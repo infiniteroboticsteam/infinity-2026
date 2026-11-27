@@ -19,7 +19,7 @@ async def M3():
     await DRIVE_BASE.straight(300)
     await multitask(
         DRIVE_BASE.straight(-300),
-        RIGHT_ATTACHMENT.run_angle(1000, -90),
+        RIGHT_ATTACHMENT.run_angle(1000, -180),
 
     )
     

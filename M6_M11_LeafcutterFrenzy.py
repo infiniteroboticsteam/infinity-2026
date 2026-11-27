@@ -24,7 +24,7 @@ async def M6_M11():
     await DRIVE_BASE.straight(-100)
     await DRIVE_BASE.turn(-60) 
     await DRIVE_BASE.arc(350,100)
-    await DRIVE_BASE.straight(125)
+    await DRIVE_BASE.straight(135)
     await DRIVE_LEFT.run_angle(360, -340)  # step 7 push leaves
     DRIVE_BASE.settings(
         straight_speed=100,

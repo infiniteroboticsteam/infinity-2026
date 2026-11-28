@@ -72,6 +72,18 @@ PROFILES = {
         "left_color_sensor": Port.F,
         "right_color_sensor": Port.C,
     },
+    "HowardHub": {
+        "hub_top_side": Axis.Z,
+        "hub_front_side": - Axis.Y,
+        "wheel_diameter": 56,  # mm
+        "axle_track": 114,     # mm
+        "drive_left": {"port": Port.D, "direction": Direction.COUNTERCLOCKWISE},
+        "drive_right": {"port": Port.F, "direction": Direction.CLOCKWISE},
+        "left_attachment": {"port": Port.C, "direction": Direction.COUNTERCLOCKWISE},
+        "right_attachment": {"port": Port.A, "direction": Direction.COUNTERCLOCKWISE},
+        "left_color_sensor": Port.E,
+        "right_color_sensor": Port.B,
+    },
     "Howard": {
         "hub_top_side": Axis.Z,
         "hub_front_side": - Axis.Y,
